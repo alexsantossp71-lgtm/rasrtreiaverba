@@ -41,7 +41,7 @@ const emendasData = [
         ano: 2023,
         status: "concluido"
     },
-    
+
     // Rosana Valle - PL/SP
     {
         id: 5,
@@ -93,7 +93,7 @@ const emendasData = [
         ano: 2023,
         status: "concluido"
     },
-    
+
     // Delegado da Cunha - Podemos/SP
     {
         id: 10,
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Configurar filtros
 function initializeFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -201,7 +201,7 @@ function initializeFilters() {
 // Configurar busca
 function initializeSearch() {
     const searchInput = document.getElementById('searchInput');
-    
+
     searchInput.addEventListener('input', (e) => {
         searchTerm = e.target.value.toLowerCase();
         applyFilters();
@@ -213,17 +213,17 @@ function applyFilters() {
     filteredEmendas = emendasData.filter(emenda => {
         // Filtro por área
         const matchesFilter = currentFilter === 'all' || emenda.area === currentFilter;
-        
+
         // Filtro por busca
-        const matchesSearch = searchTerm === '' || 
+        const matchesSearch = searchTerm === '' ||
             emenda.deputado.toLowerCase().includes(searchTerm) ||
             emenda.partido.toLowerCase().includes(searchTerm) ||
             areaConfig[emenda.area].label.toLowerCase().includes(searchTerm) ||
             emenda.projeto.toLowerCase().includes(searchTerm);
-        
+
         return matchesFilter && matchesSearch;
     });
-    
+
     renderEmendas();
 }
 
@@ -231,16 +231,16 @@ function applyFilters() {
 function renderEmendas() {
     const grid = document.getElementById('emendasGrid');
     const emptyState = document.getElementById('emptyState');
-    
+
     if (filteredEmendas.length === 0) {
         grid.style.display = 'none';
         emptyState.style.display = 'block';
         return;
     }
-    
+
     grid.style.display = 'grid';
     emptyState.style.display = 'none';
-    
+
     grid.innerHTML = filteredEmendas.map((emenda, index) => {
         const area = areaConfig[emenda.area];
         const statusLabels = {
@@ -248,7 +248,7 @@ function renderEmendas() {
             'concluido': 'Concluído',
             'planejamento': 'Planejamento'
         };
-        
+
         return `
             <div class="emenda-card" style="animation-delay: ${index * 0.05}s">
                 <div class="emenda-header">
@@ -281,17 +281,17 @@ function updateStats() {
     const totalEmendas = emendasData.length;
     const totalDeputados = new Set(emendasData.map(e => e.deputado)).size;
     const totalValor = emendasData.reduce((sum, e) => sum + e.valor, 0);
-    
+
     // Animação dos números
     animateValue('totalEmendas', 0, totalEmendas, 1000);
     animateValue('totalDeputados', 0, totalDeputados, 1000);
-    
+
     const valorElement = document.getElementById('totalValor');
     let currentValue = 0;
     const increment = totalValor / 60;
     const duration = 1500;
     const stepTime = duration / 60;
-    
+
     const timer = setInterval(() => {
         currentValue += increment;
         if (currentValue >= totalValor) {
@@ -308,7 +308,7 @@ function animateValue(elementId, start, end, duration) {
     const range = end - start;
     const increment = range / (duration / 16);
     let current = start;
-    
+
     const timer = setInterval(() => {
         current += increment;
         if (current >= end) {
