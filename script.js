@@ -1,124 +1,149 @@
-// Dados de demonstração das emendas parlamentares
+// Dados das emendas parlamentares - Deputados Federais da Baixada Santista
 const emendasData = [
+    // Paulo Alexandre Barbosa - PSDB/SP
     {
         id: 1,
-        deputado: "Maria Silva",
-        partido: "PT/SP",
-        valor: 2500000,
+        deputado: "Paulo Alexandre Barbosa",
+        partido: "PSDB/SP",
+        valor: 2000000,
         area: "saude",
-        projeto: "Modernização do Hospital Ana Costa com aquisição de equipamentos de UTI e reforma da ala de emergência",
+        projeto: "Aquisição de equipamentos hospitalares para unidades de saúde de Santos",
         ano: 2024,
         status: "em-execucao"
     },
     {
         id: 2,
-        deputado: "João Santos",
+        deputado: "Paulo Alexandre Barbosa",
         partido: "PSDB/SP",
-        valor: 1800000,
-        area: "educacao",
-        projeto: "Construção de nova creche no bairro Rádio Clube com capacidade para 200 crianças e infraestrutura completa",
+        valor: 1500000,
+        area: "infraestrutura",
+        projeto: "Reforma e modernização de vias públicas na região central de Santos",
         ano: 2024,
         status: "planejamento"
     },
     {
         id: 3,
-        deputado: "Ana Paula Costa",
-        partido: "PSOL/SP",
-        valor: 3200000,
-        area: "infraestrutura",
-        projeto: "Revitalização da Av. Ana Costa incluindo nova pavimentação, ciclovias e paisagismo urbano",
+        deputado: "Paulo Alexandre Barbosa",
+        partido: "PSDB/SP",
+        valor: 800000,
+        area: "educacao",
+        projeto: "Construção de quadra poliesportiva coberta em escola municipal",
         ano: 2023,
         status: "concluido"
     },
     {
         id: 4,
-        deputado: "Carlos Eduardo Lima",
-        partido: "PP/SP",
-        valor: 950000,
-        area: "cultura",
-        projeto: "Restauração do Teatro Coliseu Santista e modernização do sistema de som e iluminação",
+        deputado: "Paulo Alexandre Barbosa",
+        partido: "PSDB/SP",
+        valor: 1200000,
+        area: "saude",
+        projeto: "Ampliação de Unidade Básica de Saúde no Jardim Castelo",
+        ano: 2023,
+        status: "concluido"
+    },
+    
+    // Rosana Valle - PL/SP
+    {
+        id: 5,
+        deputado: "Rosana Valle",
+        partido: "PL/SP",
+        valor: 3000000,
+        area: "saude",
+        projeto: "Aquisição de ambulâncias e equipamentos médicos para atendimento de emergência",
         ano: 2024,
         status: "em-execucao"
     },
     {
-        id: 5,
-        deputado: "Fernanda Oliveira",
-        partido: "PDT/SP",
-        valor: 1500000,
-        area: "saude",
-        projeto: "Ampliação da UBS do Jardim Castelo com novos consultórios e sala de vacinas climatizada",
+        id: 6,
+        deputado: "Rosana Valle",
+        partido: "PL/SP",
+        valor: 1800000,
+        area: "educacao",
+        projeto: "Reforma e adequação de escolas municipais com acessibilidade",
         ano: 2024,
-        status: "planejamento"
+        status: "em-execucao"
     },
     {
-        id: 6,
-        deputado: "Roberto Mendes",
-        partido: "MDB/SP",
-        valor: 2100000,
-        area: "educacao",
-        projeto: "Reforma completa de 5 escolas municipais com adequação à acessibilidade e novas salas de informática",
+        id: 7,
+        deputado: "Rosana Valle",
+        partido: "PL/SP",
+        valor: 2500000,
+        area: "infraestrutura",
+        projeto: "Pavimentação e drenagem em vias públicas da Zona Noroeste",
         ano: 2023,
         status: "concluido"
     },
     {
-        id: 7,
-        deputado: "Juliana Rodrigues",
-        partido: "NOVO/SP",
-        valor: 1750000,
-        area: "infraestrutura",
-        projeto: "Implementação de novo sistema de drenagem no bairro Aparecida para combate a enchentes",
-        ano: 2024,
-        status: "em-execucao"
-    },
-    {
         id: 8,
-        deputado: "Paulo Henrique",
+        deputado: "Rosana Valle",
         partido: "PL/SP",
-        valor: 850000,
+        valor: 1000000,
         area: "cultura",
-        projeto: "Criação de centro cultural no Morro da Penha com biblioteca comunitária e espaço multiuso",
+        projeto: "Revitalização de espaços culturais e centro comunitário",
         ano: 2024,
         status: "planejamento"
     },
     {
         id: 9,
-        deputado: "Beatriz Almeida",
-        partido: "PSB/SP",
-        valor: 2800000,
+        deputado: "Rosana Valle",
+        partido: "PL/SP",
+        valor: 2200000,
         area: "saude",
-        projeto: "Instalação de tomógrafo e ressonância magnética no Hospital Guilherme Álvaro",
+        projeto: "Modernização de equipamentos do Hospital Guilherme Álvaro",
         ano: 2023,
         status: "concluido"
     },
+    
+    // Delegado da Cunha - Podemos/SP
     {
         id: 10,
-        deputado: "Ricardo Ferreira",
-        partido: "CIDADANIA/SP",
-        valor: 1200000,
+        deputado: "Delegado da Cunha",
+        partido: "Podemos/SP",
+        valor: 1500000,
         area: "infraestrutura",
-        projeto: "Construção de novo viaduto no Canal 4 para melhorar o trânsito da região",
+        projeto: "Implantação de sistema de videomonitoramento urbano",
         ano: 2024,
         status: "em-execucao"
     },
     {
         id: 11,
-        deputado: "Mariana Campos",
-        partido: "REDE/SP",
-        valor: 980000,
+        deputado: "Delegado da Cunha",
+        partido: "Podemos/SP",
+        valor: 900000,
         area: "educacao",
-        projeto: "Implantação de laboratórios de ciências em 8 escolas estaduais da cidade",
+        projeto: "Equipamentos de informática e tecnologia para escolas públicas",
         ano: 2024,
         status: "planejamento"
     },
     {
         id: 12,
-        deputado: "José Carlos Pinto",
-        partido: "PV/SP",
-        valor: 1650000,
-        area: "cultura",
-        projeto: "Revitalização do Aquário Municipal com novos tanques e centro de educação ambiental",
+        deputado: "Delegado da Cunha",
+        partido: "Podemos/SP",
+        valor: 1800000,
+        area: "saude",
+        projeto: "Aquisição de equipamentos médicos para unidades de pronto atendimento",
         ano: 2024,
         status: "em-execucao"
+    },
+    {
+        id: 13,
+        deputado: "Delegado da Cunha",
+        partido: "Podemos/SP",
+        valor: 750000,
+        area: "infraestrutura",
+        projeto: "Reforma de praças e áreas de lazer em bairros periféricos",
+        ano: 2023,
+        status: "concluido"
+    },
+    {
+        id: 14,
+        deputado: "Delegado da Cunha",
+        partido: "Podemos/SP",
+        valor: 1100000,
+        area: "cultura",
+        projeto: "Reforma de biblioteca municipal e aquisição de acervo",
+        ano: 2024,
+        status: "planejamento"
     }
 ];
 
