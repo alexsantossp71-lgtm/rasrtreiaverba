@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RastraVerba | Monitoramento de Emendas Pix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Effects -->
+    <div class="bg-gradient"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">💸</span>
+            RastraVerba <span class="version">v1.0</span>
+        </div>
+        <div class="header-subtitle">
+            Transparência em Transferências Especiais
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <h1 class="hero-title">Siga o rastro do dinheiro público</h1>
+            <p class="hero-subtitle">Monitore emendas parlamentares do tipo "Pix" desde a origem até o fornecedor final.
+            </p>
+
+            <form id="searchForm" class="search-box-advanced">
+                <div class="filter-grid">
+                    <!-- Deputado -->
+                    <div class="filter-group">
+                        <label for="deputadoInput">Deputado</label>
+                        <input type="text" id="deputadoInput" list="deputadosList"
+                            placeholder="Todos (digite para filtrar...)" autocomplete="off">
+                        <datalist id="deputadosList">
+                            <!-- Preenchido via JS -->
+                        </datalist>
+                    </div>
+
+                    <!-- Partido -->
+                    <div class="filter-group">
+                        <label for="partidoSelect">Partido</label>
+                        <select id="partidoSelect">
+                            <option value="">Todos</option>
+                            <!-- Preenchido via JS -->
+                        </select>
+                    </div>
+
+                    <!-- Estado -->
+                    <div class="filter-group">
+                        <label for="estadoSelect">Estado</label>
+                        <select id="estadoSelect">
+                            <option value="">Todos</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="MG">Minas Gerais</option>
+                        </select>
+                    </div>
+
+                    <!-- Ano Início -->
+                    <div class="filter-group">
+                        <label for="anoInicioInput">Ano Início</label>
+                        <input type="number" id="anoInicioInput" placeholder="Ex: 2023" min="2019" max="2025">
+                    </div>
+
+                    <!-- Ano Fim -->
+                    <div class="filter-group">
+                        <label for="anoFimInput">Ano Fim</label>
+                        <input type="number" id="anoFimInput" placeholder="Ex: 2024" min="2019" max="2025">
+                    </div>
+
+                    <!-- Cidade -->
+                    <div class="filter-group">
+                        <label for="cidadeInput">Cidade</label>
+                        <input type="text" id="cidadeInput" list="cidadesList"
+                            placeholder="Todos (digite para filtrar...)" autocomplete="off">
+                        <datalist id="cidadesList">
+                            <!-- Preenchido via JS -->
+                        </datalist>
+                    </div>
+
+                    <!-- Área -->
+                    <div class="filter-group">
+                        <label for="areaSelect">Área</label>
+                        <select id="areaSelect">
+                            <option value="">Todas</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Educação">Educação</option>
+                            <option value="Infraestrutura">Infraestrutura</option>
+                            <option value="Cultura">Cultura</option>
+                            <option value="Esporte">Esporte</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="search-actions">
+                    <button type="submit" id="searchButton">
+                        <span id="btnText">Rastrear Verba</span>
+                        <span id="btnLoader" class="loader" style="display:none;"></span>
+                    </button>
+                    <button type="button" id="clearButton" class="btn-secondary">Limpar</button>
+                </div>
+            </form>
+
+            <div class="search-tags">
+                <span>Buscas recentes:</span>
+                <button class="tag" onclick="fillSearch('Paulo Alexandre Barbosa')">Paulo Alexandre (Santos)</button>
+                <button class="tag" onclick="fillSearch('Arthur Lira')">Arthur Lira (Batalha)</button>
+            </div>
+        </section>
+
+        <!-- Table Results Section (Shown after search) -->
+        <section id="tableSection" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h3>Emendas Encontradas</h3>
+                <span class="record-count" id="recordCount">0 registros</span>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Deputado</th>
+                            <th>Partido</th>
+                            <th>Cidade/UF</th>
+                            <th>Valor</th>
+                            <th>Ano</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody">
+                        <!-- Preenchido via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Visualization Section (Shown after clicking a table row) -->
+        <section id="graphSection" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h3>Detalhamento do Rastro</h3>
+                <button id="backToTableBtn" class="btn-secondary btn-sm">← Voltar para lista</button>
+            </div>
+
+            <div class="money-trail-container">
+                <!-- Nodes will be injected here by JS -->
+                <div class="trail-wrapper" id="trailWrapper">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+
+            <!-- Evidence Panel -->
+            <div class="evidence-panel">
+                <div class="evidence-header">
+                    <span class="icon">📄</span> Evidência Encontrada (Diário Oficial)
+                </div>
+                <div class="evidence-content" id="evidenceText">
+                    <!-- Text injected by JS -->
+                </div>
+                <div class="evidence-footer">
+                    Fonte: <a href="#" id="evidenceLink" target="_blank">Querido Diário API</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
